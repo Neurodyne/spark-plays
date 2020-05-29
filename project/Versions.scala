@@ -6,4 +6,5 @@ object Version {
   val mllib  = "3.0.0-preview2"
   val hbase  = "2.2.5"
   val bahir  = "2.4.0"
+  val kafka  = mllib
 }

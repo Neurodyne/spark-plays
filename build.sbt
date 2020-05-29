@@ -12,31 +12,36 @@ lazy val commonSettings = Seq(
 )
 
 lazy val commonDeps = libraryDependencies ++= Seq(
-  "com.github.scopt" %% "scopt"     % "4.0.0-RC2",
-  "com.github.Ma27"  %% "rediscala" % "1.9.1",
-  "redis.clients"    % "jedis"      % "3.3.0"
+  "com.github.scopt" %% "scopt"         % "4.0.0-RC2",
+  "com.github.Ma27"  %% "rediscala"     % "1.9.1",
+  "redis.clients"    % "jedis"          % "3.3.0",
+  "com.huaban"       % "jieba-analysis" % "1.0.2",
+  "org.mongodb"      % "mongodb-driver" % "3.12.4",
+  "org.mongodb"      %% "casbah-core"   % "3.1.1"
 )
 
 lazy val sparkDeps = libraryDependencies ++= Seq(
-  "org.apache.spark" %% "spark-core"              % Version.spark,
-  "org.apache.spark" %% "spark-streaming"         % Version.spark,
-  "org.apache.spark" %% "spark-streaming-flume"   % Version.spark,
-  "org.apache.bahir" %% "spark-streaming-mqtt"    % Version.bahir,
-  "org.apache.bahir" %% "spark-streaming-zeromq"  % Version.bahir,
-  "org.apache.bahir" %% "spark-streaming-twitter" % Version.bahir,
-  "org.apache.spark" %% "spark-mllib"             % Version.mllib,
-  "org.apache.spark" %% "spark-sql"               % Version.spark,
-  "org.apache.spark" %% "spark-hive"              % Version.spark,
-  "org.apache.spark" %% "spark-graphx"            % Version.spark
+  "org.apache.spark" %% "spark-core"                 % Version.spark,
+  "org.apache.spark" %% "spark-streaming"            % Version.spark,
+  "org.apache.spark" %% "spark-streaming-flume"      % Version.spark,
+  "org.apache.bahir" %% "spark-streaming-mqtt"       % Version.bahir,
+  "org.apache.bahir" %% "spark-streaming-zeromq"     % Version.bahir,
+  "org.apache.bahir" %% "spark-streaming-twitter"    % Version.bahir,
+  "org.apache.spark" %% "spark-mllib"                % Version.mllib,
+  "org.apache.spark" %% "spark-sql"                  % Version.spark,
+  "org.apache.spark" %% "spark-hive"                 % Version.spark,
+  "org.apache.spark" %% "spark-graphx"               % Version.spark,
+  "org.apache.spark" %% "spark-streaming-kafka-0-10" % Version.kafka
 )
 
 lazy val hadoopDeps = libraryDependencies ++= Seq(
-  "com.google.guava"  % "guava"         % Version.guava,
-  "org.apache.hadoop" % "hadoop-core"   % "1.2.1",
-  "org.apache.hadoop" % "hadoop-mapred" % "0.22.0",
-  "org.apache.hadoop" % "hadoop-common" % Version.hadoop,
-  "org.apache.hbase"  % "hbase-common"  % Version.hbase,
-  "org.apache.hbase"  % "hbase-client"  % Version.hbase
+  "com.google.guava"  % "guava"            % Version.guava,
+  "org.apache.hadoop" % "hadoop-core"      % "1.2.1",
+  "org.apache.hadoop" % "hadoop-mapred"    % "0.22.0",
+  "org.apache.hadoop" % "hadoop-mapreduce" % "3.2.1",
+  "org.apache.hadoop" % "hadoop-common"    % Version.hadoop,
+  "org.apache.hbase"  % "hbase-common"     % Version.hbase,
+  "org.apache.hbase"  % "hbase-client"     % Version.hbase
 )
 
 lazy val root = (project in file("."))
