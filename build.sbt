@@ -21,17 +21,17 @@ lazy val commonDeps = libraryDependencies ++= Seq(
 )
 
 lazy val sparkDeps = libraryDependencies ++= Seq(
-  "org.apache.spark" %% "spark-core"                 % Version.spark,
-  "org.apache.spark" %% "spark-streaming"            % Version.spark,
-  "org.apache.spark" %% "spark-streaming-flume"      % Version.spark,
-  "org.apache.bahir" %% "spark-streaming-mqtt"       % Version.bahir,
-  "org.apache.bahir" %% "spark-streaming-zeromq"     % Version.bahir,
-  "org.apache.bahir" %% "spark-streaming-twitter"    % Version.bahir,
-  "org.apache.spark" %% "spark-mllib"                % Version.mllib,
-  "org.apache.spark" %% "spark-sql"                  % Version.spark,
-  "org.apache.spark" %% "spark-hive"                 % Version.spark,
-  "org.apache.spark" %% "spark-graphx"               % Version.spark,
-  "org.apache.spark" %% "spark-streaming-kafka-0-10" % Version.kafka
+  "org.apache.spark" %% "spark-core"                          % Version.spark,
+  "org.apache.spark" %% "spark-streaming"                     % Version.spark,
+  "org.apache.spark" %% "spark-streaming-flume"               % Version.spark,
+  "org.apache.bahir" %% "spark-streaming-mqtt"                % Version.bahir,
+  "org.apache.bahir" %% "spark-streaming-zeromq"              % Version.bahir,
+  "org.apache.bahir" %% "spark-streaming-twitter"             % Version.bahir,
+  "org.apache.spark" %% "spark-mllib"                         % Version.mllib,
+  "org.apache.spark" %% "spark-sql"                           % Version.spark,
+  "org.apache.spark" %% "spark-hive"                          % Version.spark,
+  "org.apache.spark" %% "spark-graphx"                        % Version.spark,
+  "org.apache.spark" %% "spark-streaming-kafka-0-10-assembly" % Version.kafka
 )
 
 lazy val hadoopDeps = libraryDependencies ++= Seq(
@@ -39,9 +39,14 @@ lazy val hadoopDeps = libraryDependencies ++= Seq(
   "org.apache.hadoop" % "hadoop-core"      % "1.2.1",
   "org.apache.hadoop" % "hadoop-mapred"    % "0.22.0",
   "org.apache.hadoop" % "hadoop-mapreduce" % "3.2.1",
-  "org.apache.hadoop" % "hadoop-common"    % Version.hadoop,
-  "org.apache.hbase"  % "hbase-common"     % Version.hbase,
-  "org.apache.hbase"  % "hbase-client"     % Version.hbase
+  "org.apache.hadoop" % "hadoop-common"    % Version.hadoop
+)
+
+lazy val hbaseDeps = libraryDependencies ++= Seq(
+  "org.apache.hbase" % "hbase"           % Version.hbase,
+  "org.apache.hbase" % "hbase-common"    % Version.hbase,
+  "org.apache.hbase" % "hbase-client"    % Version.hbase,
+  "org.apache.hbase" % "hbase-mapreduce" % Version.hbase
 )
 
 lazy val root = (project in file("."))
@@ -54,6 +59,7 @@ lazy val root = (project in file("."))
     commonSettings,
     commonDeps,
     hadoopDeps,
+    hbaseDeps,
     sparkDeps
   )
 
