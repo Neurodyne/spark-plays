@@ -11,6 +11,12 @@ lazy val commonSettings = Seq(
   )
 )
 
+lazy val commonDeps = libraryDependencies ++= Seq(
+  "com.github.scopt" %% "scopt"     % "4.0.0-RC2",
+  "com.github.Ma27"  %% "rediscala" % "1.9.1",
+  "redis.clients"    % "jedis"      % "3.3.0"
+)
+
 lazy val sparkDeps = libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-core"              % Version.spark,
   "org.apache.spark" %% "spark-streaming"         % Version.spark,
@@ -18,17 +24,19 @@ lazy val sparkDeps = libraryDependencies ++= Seq(
   "org.apache.bahir" %% "spark-streaming-mqtt"    % Version.bahir,
   "org.apache.bahir" %% "spark-streaming-zeromq"  % Version.bahir,
   "org.apache.bahir" %% "spark-streaming-twitter" % Version.bahir,
+  "org.apache.spark" %% "spark-mllib"             % Version.mllib,
   "org.apache.spark" %% "spark-sql"               % Version.spark,
   "org.apache.spark" %% "spark-hive"              % Version.spark,
   "org.apache.spark" %% "spark-graphx"            % Version.spark
 )
 
 lazy val hadoopDeps = libraryDependencies ++= Seq(
-  "com.google.guava"  %% "guava"         % Version.guava,
-  "org.apache.hadoop" %% "hadoop-common" % Version.hadoop,
-  "org.apache.hadoop" %% "hadoop-mapred" % "0.22.0",
-  "org.apache.hbase"  %% "hbase-common"  % Version.hbase,
-  "org.apache.hbase"  %% "hbase-client"  % Version.hbase
+  "com.google.guava"  % "guava"         % Version.guava,
+  "org.apache.hadoop" % "hadoop-core"   % "1.2.1",
+  "org.apache.hadoop" % "hadoop-mapred" % "0.22.0",
+  "org.apache.hadoop" % "hadoop-common" % Version.hadoop,
+  "org.apache.hbase"  % "hbase-common"  % Version.hbase,
+  "org.apache.hbase"  % "hbase-client"  % Version.hbase
 )
 
 lazy val root = (project in file("."))
@@ -36,9 +44,11 @@ lazy val root = (project in file("."))
     organization := "Neurodyne",
     name := "top",
     version := "0.0.1",
-    scalaVersion := "2.12.10",
+    scalaVersion := "2.12.11",
     maxErrors := 3,
     commonSettings,
+    commonDeps,
+    hadoopDeps,
     sparkDeps
   )
 
